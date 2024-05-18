@@ -8,30 +8,20 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Builder
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Users {
+public class Wallet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    private String firstname;
-
-    private String lastname;
-
-    private String email;
-
-    private String password;
+    private double balance;
 
     private LocalDateTime originated;
 
-    private LocalDateTime modified;
-
     @OneToOne
-    @ToString.Exclude
-    private Wallet wallet;
-
+    private Users user;
 }
